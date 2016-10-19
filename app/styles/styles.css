@@ -6,13 +6,3 @@
     background-repeat: no-repeat;
     color: white;
 }
-
-@media screen and (min-width: 768px) {
-    .resize-image {
-        width: 100%;
-        height: 400px;
-    }
-    .panel-height {
-        height: 600px;
-    }
-}
