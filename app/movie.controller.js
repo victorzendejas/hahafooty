@@ -21,12 +21,9 @@
             movieService.getMovies(search).then(
                 function(result) {
                     vm.all = result.data.Search;
-                },
-                function(error) {
-
-
                 }
             )
         }
     }
 })();
+// -CW, EP, BS, VZ

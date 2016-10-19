@@ -13,20 +13,12 @@
         this.getMovies = getMovies;
 
 
-        // var service = {
-        //     getMovie: getMovie,
-        //     getMovieDetail: getMovieDetail
-        // };
-
-
-        // return service;
-
         ////////////////
-
+        // Getting movies that are search for 
         function getMovies(search) {
 
             var defer = $q.defer();
-
+            // using the 'get' function to pull up all the data for search
             $http({
                     method: 'GET',
                     url: 'http://www.omdbapi.com/',
@@ -39,10 +31,8 @@
                     function(result) {
                         if (typeof result === 'object') {
                             defer.resolve(result);
-
-
                         } else {
-                            defer.reject('servive error');
+                            defer.reject('service error');
                         }
                     },
                     // failure
@@ -81,3 +71,5 @@
         }
     }
 })();
+// -CW, EP, BS, VZ
+

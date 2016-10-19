@@ -23,10 +23,8 @@
                 function(result) {
                     vm2.moreDetail = result.data;
                     vm2.movieTitle = vm2.moreDetail.Title;
-                },
-                function(error) {
-
                 }
+
             )
         }
 
@@ -37,3 +35,4 @@
 
     }
 })();
+// -CW, EP, BS, VZ
