@@ -1,39 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="myApp">
 
 <head>
     <meta charset="UTF-8">
-    <title>Movie Nerd</title>
+    <title>SD TopSpots</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
     <link rel="stylesheet" href="bower_components/animated/animated.css" />
     <link rel="stylesheet" href="/app/styles/styles.css">
 </head>
 
 <body>
-    <legend></legend>
-    <div class="container">
-        <div class="jumbotron">
-            <p align="center">
-                <font id="text" size="7"> Movie Nerd</font>
-            </p>
+
+    <body ng-controller="TopSpotsController as vm">
+        <h1 align="center">San Diego Top Spots Angular</h1>
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- The ng-repeat directive repeats a set of HTML from a collection, a given number of times. In this case my data of SDtopspots which include the name of the location, description, and location(coordinates) -->
+                    <tr ng-repeat="data in vm.topspots">
+                        <td> {{data.name}}</td>
+                        <td> {{data.description}}</td>
+                        <!-- button-once you click it will forward user to google maps wth coordinates of location-->
+                        <td><a class="btn btn-primary" target="_blank" href="https://www.google.com/maps?q= {{data.location[0]}}, {{data.location[1]}}">Open in Google Maps</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
-    <div class="container">
-        <div ui-view></div>
-    </div>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
-    <script src="bower_components/animated/animated.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/app/app.js"></script>
-    <script src="/app/movie.controller.js"></script>
-    <script src="/app/movie.detail.controller.js"></script>
-    <script src="/app/movie.service.js"></script>
-</body>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="bower_components/animated/animated.js"></script>
+        <script src="/app/app.js"></script>
+        <script src="/app/topspots.controller.js"></script>
+    </body>
 
 </html>
-<!-- -CW, EP, BS, VZ
- -->
