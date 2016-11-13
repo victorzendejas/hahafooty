@@ -1,43 +1,90 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html ng-strict-di>
 
 <head>
     <meta charset="UTF-8">
-    <title>SD TopSpots</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
-    <link rel="stylesheet" href="bower_components/animated/animated.css" />
-    <link rel="stylesheet" href="/app/styles/styles.css">
+    <title>HAHAFOOTY</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//rawgit.com/toopay/bootstrap-markdown/master/css/bootstrap-markdown.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+    <link rel="stylesheet" href="app/styles/style.css">
+    <!-- external librairies CDN -->
 </head>
 
 <body>
-
-    <body ng-controller="TopSpotsController as vm">
-        <h1 align="center">San Diego Top Spots Angular</h1>
-        <div class="container">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Location</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- The ng-repeat directive repeats a set of HTML from a collection, a given number of times. In this case my data of SDtopspots which include the name of the location, description, and location(coordinates) -->
-                    <tr ng-repeat="data in vm.topspots">
-                        <td> {{data.name}}</td>
-                        <td> {{data.description}}</td>
-                        <!-- button-once you click it will forward user to google maps wth coordinates of location-->
-                        <td><a class="btn btn-primary" target="_blank" href="https://www.google.com/maps?q= {{data.location[0]}}, {{data.location[1]}}">Open in Google Maps</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">HF</a></li>
+                    <li class="dropdown mega-dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+                        <div class="dropdown-menu mega-dropdown-menu">
+                            <div class="container-fluid">
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="men">
+                                        <ul class="nav-list list-inline">
+                                            <li>
+                                                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/250px-Premier_League_Logo.svg.png"></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img src="http://1.bp.blogspot.com/-iOuUVcjJzio/Vc0HrJXe0xI/AAAAAAAAA-o/-dPf4mm335c/s1600/Liga%2BMX_logopng.png"></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><img id="uefa" width="150px" src="images/uefa.png"></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Nav tabs -->
+                        </div>
+                    </li>
+                </ul>
+                <!-- <ul class="nav navbar-nav navbar-right">
+    <li><a href="#">Link</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </li>
+</ul>
+ -->
+            </div>
+            <!-- /.navbar-collapse -->
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-        <script src="bower_components/animated/animated.js"></script>
-        <script src="/app/app.js"></script>
-        <script src="/app/topspots.controller.js"></script>
-    </body>
+        <!-- /.container-fluid -->
+        <!-- editor -->
+        <script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+        <script type="text/javascript" src="//rawgit.com/Hypercubed/angular-marked/master/dist/angular-marked.min.js"></script>
+        <script type="text/javascript" src="//rawgit.com/toopay/bootstrap-markdown/master/js/bootstrap-markdown.js"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+        <script type="text/javascript" src="//rawgit.com/pc035860/angular-highlightjs/master/build/angular-highlightjs.min.js"></script>
+        <!-- your ng-app file -->
+        <script type="text/javascript" src="app/app.js"></script>
+        <script type="text/javascript" src="bower_components/angular-markdown-editor-ghiscoding/src/angular-markdown-editor.js"></script>
+</body>
 
 </html>
