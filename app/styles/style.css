@@ -67,3 +67,8 @@ body {
 .list-inline img {
     width: 100px;
 }
+
+.navbar-fixed-bottom {
+    background-color: black;
+    color: white;
+}
