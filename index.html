@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html ng-strict-di>
+<html ng-strict-di ng-app="app">
 
 <head>
     <meta charset="UTF-8">
     <title>HAHAFOOTY</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//rawgit.com/toopay/bootstrap-markdown/master/css/bootstrap-markdown.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/animated/animated.css" />
     <link rel="stylesheet" href="app/styles/style.css">
     <!-- external librairies CDN -->
 </head>
 
-<body>
+<body class="ng-cloak" ng-controller="EPLController as vm">
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,7 +30,7 @@
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
                     <li class="dropdown mega-dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Soccer League<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Soccer Leagues<span class="caret"></span></a>
                         <div class="dropdown-menu mega-dropdown-menu">
                             <div class="container-fluid">
                                 <!-- Tab panes -->
@@ -37,7 +38,8 @@
                                     <div class="tab-pane active" id="men">
                                         <ul class="nav-list list-inline">
                                             <li>
-                                                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/250px-Premier_League_Logo.svg.png"></a>
+                                                <!-- <button type="button" class="btn btn-info" ng-click="vm.showStandings = !vm.showStandings">Standings</button>-->
+                                                <a href="#"><img ng-click="vm.showStandings = !vm.showStandings" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/250px-Premier_League_Logo.svg.png"></a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="http://1.bp.blogspot.com/-iOuUVcjJzio/Vc0HrJXe0xI/AAAAAAAAA-o/-dPf4mm335c/s1600/Liga%2BMX_logopng.png"></a>
@@ -81,7 +83,37 @@
     </nav>
     <div>
         <div class="col-md-3"><pre>left side</pre></div>
-        <div class="col-md-6 text-center" id="bottomcenternav"><pre>midle</pre></div>
+        <div class="col-md-6 text-center" id="bottomcenternav">
+            <div class="col-sm-12">
+                <div class="panel panel-info" ng-class="hide" ng-show="vm.showStandings">
+                    <div class="panel-heading">
+                        <center><img id="barclay" src="pictures/lionlogo.png"></center>
+                        <p>
+                            <center class="font">Standings</center>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table-striped col-xs-12">
+                            <tr>
+                                <th>Rank</th>
+                                <th>Teams</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
+                                <th>Points</th>
+                            </tr>
+                            <tr ng-repeat="team in vm.EPLstandings">
+                                <td>{{team.position}}</td>
+                                <td>{{team.team}}</td>
+                                <td>{{team.overall.wins}}</td>
+                                <td>{{team.overall.draws}}</td>
+                                <td>{{team.overall.losts}}</td>
+                                <td>{{team.overall.points}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-3" id="bottomrightnav"><pre>right side</pre></div>
     </div>
     <div class="navbar-fixed-bottom">
@@ -89,20 +121,16 @@
             <label> Created by Juan Acosta and Victor Zendejas</label>
         </div>
     </div>
-    <!-- /.container-fluid -->
-    <!-- editor -->
     <script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
-    <script type="text/javascript" src="//rawgit.com/Hypercubed/angular-marked/master/dist/angular-marked.min.js"></script>
-    <script type="text/javascript" src="//rawgit.com/toopay/bootstrap-markdown/master/js/bootstrap-markdown.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
-    <script type="text/javascript" src="//rawgit.com/pc035860/angular-highlightjs/master/build/angular-highlightjs.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/animated/animated.js"></script>
     <!-- your ng-app file -->
     <script type="text/javascript" src="app/app.js"></script>
-    <script type="text/javascript" src="bower_components/angular-markdown-editor-ghiscoding/src/angular-markdown-editor.js"></script>
+    <script type="text/javascript" src="app/hahafootycontroller.js"></script>
+    <script type="text/javascript" src="app/hahafootyfactory.js"></script>
 </body>
 
 </html>

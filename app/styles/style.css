@@ -72,3 +72,11 @@ body {
     background-color: black;
     color: white;
 }
+
+#barclay {
+    width: 30%;
+}
+
+.ng-cloak {
+    display: none;
+}
